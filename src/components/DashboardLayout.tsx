@@ -11,9 +11,12 @@ const tabs = [
   { id: "overview", label: "Tab 1 — Sponsor Dashboard v4" },
   { id: "analytics", label: "Tab 2 — FOMO G Campaign Performance Analytics v4" },
   { id: "control", label: "Tab 3 — Campaign Control Center v5.3" },
-  { id: "audit", label: "Tab 4 — Proof & Audit Monitor" },
-  { id: "escrow", label: "Tab 5 — Escrow Payment Ledger" },
-  { id: "monitor", label: "Tab 6 — System Monitor" },
+  { id: "rewards", label: "Tab 4 — Reward & M-Pesa Distribution" },
+  { id: "payments", label: "Tab 5 — Financial & License Management" },
+  { id: "ai", label: "Tab 6 — AI Sentinel & Optimization" },
+  { id: "monitor", label: "Tab 7 — System Monitor" },
+  { id: "escrow", label: "Tab 8 — Escrow Payment Ledger" },
+  { id: "audit", label: "Tab 9 — Proof & Audit Monitor" },
 ];
 
 export function DashboardLayout({ children, activeTab, onTabChange }: DashboardLayoutProps) {

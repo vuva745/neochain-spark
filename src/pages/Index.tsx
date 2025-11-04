@@ -3,9 +3,12 @@ import { DashboardLayout } from "@/components/DashboardLayout";
 import { OverviewTab } from "@/components/tabs/OverviewTab";
 import { AnalyticsTab } from "@/components/tabs/AnalyticsTab";
 import { ControlTab } from "@/components/tabs/ControlTab";
-import { AuditTab } from "@/components/tabs/AuditTab";
-import { EscrowTab } from "@/components/tabs/EscrowTab";
+import { RewardsTab } from "@/components/tabs/RewardsTab";
+import { PaymentsTab } from "@/components/tabs/PaymentsTab";
+import { AITab } from "@/components/tabs/AITab";
 import { MonitorTab } from "@/components/tabs/MonitorTab";
+import { EscrowTab } from "@/components/tabs/EscrowTab";
+import { AuditTab } from "@/components/tabs/AuditTab";
 
 const Index = () => {
   const [activeTab, setActiveTab] = useState("overview");
@@ -18,12 +21,18 @@ const Index = () => {
         return <AnalyticsTab />;
       case "control":
         return <ControlTab />;
-      case "audit":
-        return <AuditTab />;
-      case "escrow":
-        return <EscrowTab />;
+      case "rewards":
+        return <RewardsTab />;
+      case "payments":
+        return <PaymentsTab />;
+      case "ai":
+        return <AITab />;
       case "monitor":
         return <MonitorTab />;
+      case "escrow":
+        return <EscrowTab />;
+      case "audit":
+        return <AuditTab />;
       default:
         return <OverviewTab />;
     }
