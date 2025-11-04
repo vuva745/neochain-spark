@@ -1,13 +1,38 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState } from "react";
+import { DashboardLayout } from "@/components/DashboardLayout";
+import { OverviewTab } from "@/components/tabs/OverviewTab";
+import { AnalyticsTab } from "@/components/tabs/AnalyticsTab";
+import { ControlTab } from "@/components/tabs/ControlTab";
+import { AuditTab } from "@/components/tabs/AuditTab";
+import { EscrowTab } from "@/components/tabs/EscrowTab";
+import { MonitorTab } from "@/components/tabs/MonitorTab";
 
 const Index = () => {
+  const [activeTab, setActiveTab] = useState("overview");
+
+  const renderTab = () => {
+    switch (activeTab) {
+      case "overview":
+        return <OverviewTab />;
+      case "analytics":
+        return <AnalyticsTab />;
+      case "control":
+        return <ControlTab />;
+      case "audit":
+        return <AuditTab />;
+      case "escrow":
+        return <EscrowTab />;
+      case "monitor":
+        return <MonitorTab />;
+      default:
+        return <OverviewTab />;
+    }
+  };
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
-    </div>
+    <DashboardLayout activeTab={activeTab} onTabChange={setActiveTab}>
+      {renderTab()}
+    </DashboardLayout>
   );
 };
 
