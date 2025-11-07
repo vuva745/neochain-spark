@@ -70,6 +70,63 @@ All colors MUST be HSL.
   }
 }
 
+@layer utilities {
+  /* Golden Neon Glow Effects */
+  .golden-glow {
+    box-shadow: 
+      0 0 20px rgba(251, 191, 36, 0.6),
+      0 0 40px rgba(251, 191, 36, 0.4),
+      0 0 60px rgba(251, 191, 36, 0.2),
+      inset 0 0 20px rgba(251, 191, 36, 0.1);
+  }
+
+  .golden-text-glow {
+    text-shadow: 
+      0 0 10px rgba(251, 191, 36, 0.8),
+      0 0 20px rgba(251, 191, 36, 0.6),
+      0 0 30px rgba(251, 191, 36, 0.4),
+      0 0 40px rgba(251, 191, 36, 0.2);
+  }
+
+  .golden-border-glow {
+    box-shadow: 
+      0 0 10px rgba(251, 191, 36, 0.5),
+      0 0 20px rgba(251, 191, 36, 0.3),
+      inset 0 0 10px rgba(251, 191, 36, 0.1);
+    border-color: rgba(251, 191, 36, 0.6) !important;
+  }
+
+  .golden-icon-glow {
+    filter: drop-shadow(0 0 8px rgba(251, 191, 36, 0.8)) 
+            drop-shadow(0 0 12px rgba(251, 191, 36, 0.6))
+            drop-shadow(0 0 16px rgba(251, 191, 36, 0.4));
+  }
+
+  .golden-bg-glow {
+    background: linear-gradient(135deg, 
+      rgba(251, 191, 36, 0.15) 0%, 
+      rgba(251, 191, 36, 0.05) 100%);
+    box-shadow: 
+      0 0 15px rgba(251, 191, 36, 0.3),
+      inset 0 0 15px rgba(251, 191, 36, 0.1);
+  }
+
+  .frame-glow {
+    box-shadow: 
+      0 0 8px rgba(251, 191, 36, 0.3),
+      0 0 16px rgba(251, 191, 36, 0.2),
+      inset 0 0 8px rgba(251, 191, 36, 0.1);
+  }
+
+  .border-glow {
+    border-color: rgba(251, 191, 36, 0.4) !important;
+    box-shadow: 
+      0 0 6px rgba(251, 191, 36, 0.4),
+      0 0 12px rgba(251, 191, 36, 0.2),
+      inset 0 0 6px rgba(251, 191, 36, 0.1);
+  }
+}
+
 @layer base {
   * {
     @apply border-border;
@@ -77,5 +134,21 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+  }
+
+  /* Apply golden glow to all elements with border classes */
+  [class*="border-border"],
+  [class*="border-primary"],
+  [class*="border-warning"],
+  [class*="border-accent"],
+  [class*="border-success"],
+  [class*="border-destructive"],
+  [class*="rounded-lg"][class*="border"],
+  [class*="rounded-2xl"][class*="border"],
+  [class*="rounded-xl"][class*="border"] {
+    box-shadow: 
+      0 0 6px rgba(251, 191, 36, 0.2),
+      0 0 12px rgba(251, 191, 36, 0.1),
+      inset 0 0 6px rgba(251, 191, 36, 0.05);
   }
 }

@@ -8,22 +8,37 @@ interface DashboardLayoutProps {
 }
 
 const tabs = [
-  { id: "overview", label: "Tab 1 — Sponsor Dashboard v4" },
-  { id: "analytics", label: "Tab 2 — FOMO G Campaign Performance Analytics v4" },
-  { id: "control", label: "Tab 3 — Campaign Control Center v5.3" },
-  { id: "rewards", label: "Tab 4 — Reward & M-Pesa Distribution" },
-  { id: "payments", label: "Tab 5 — Financial & License Management" },
-  { id: "ai", label: "Tab 6 — AI Sentinel & Optimization" },
-  { id: "monitor", label: "Tab 7 — System Monitor" },
-  { id: "escrow", label: "Tab 8 — Escrow Payment Ledger" },
-  { id: "audit", label: "Tab 9 — Proof & Audit Monitor" },
+  { id: "overview", label: "Sponsor Dashboard v4" },
+  { id: "analytics", label: "FOMO G Campaign Performance Analytics v4" },
+  { id: "control", label: "Campaign Control Center v5.3" },
+  { id: "rewards", label: "Reward & M-Pesa Distribution" },
+  { id: "payments", label: "Financial & License Management" },
+  { id: "ai", label: "AI Sentinel & Optimization" },
+  { id: "monitor", label: "System Monitor" },
+  { id: "escrow", label: "Escrow Payment Ledger" },
+  { id: "audit", label: "Proof & Audit Monitor" },
 ];
 
 export function DashboardLayout({ children, activeTab, onTabChange }: DashboardLayoutProps) {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen relative">
+      {/* Background Image - using direct path */}
+      <div 
+        className="fixed inset-0 -z-10"
+        style={{
+          backgroundImage: "url('/backgrounds/ChatGPT Image Nov 6, 2025, 02_58_28 PM.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      />
+      
+      {/* Very light overlay for readability */}
+      <div className="fixed inset-0 -z-10 bg-black/10" />
+      
+      <div className="relative z-10">
       {/* Header */}
-      <header className="border-b border-border bg-card px-6 py-4">
+      <header className="border-b border-border bg-card/60 backdrop-blur-md px-6 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-primary to-primary-glow">
@@ -42,19 +57,19 @@ export function DashboardLayout({ children, activeTab, onTabChange }: DashboardL
         </div>
       </header>
 
-      {/* Tab Navigation */}
-      <div className="border-b border-border bg-card/50">
-        <div className="px-6">
-          <div className="flex gap-1 overflow-x-auto">
+      {/* Tab Navigation and Content */}
+      <div className="flex border-b border-border bg-card/40 backdrop-blur-md">
+        <div className="w-64 border-r border-border bg-card/30 backdrop-blur-md p-4">
+          <div className="space-y-1">
             {tabs.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => onTabChange(tab.id)}
                 className={cn(
-                  "whitespace-nowrap border-b-2 px-4 py-3 text-sm font-medium transition-colors",
+                  "w-full text-left border-l-4 px-4 py-3 text-sm font-medium transition-colors rounded-r-md",
                   activeTab === tab.id
-                    ? "border-primary text-primary"
-                    : "border-transparent text-muted-foreground hover:text-foreground"
+                    ? "border-primary text-primary bg-primary/5"
+                    : "border-transparent text-muted-foreground hover:text-foreground hover:bg-muted/20"
                 )}
               >
                 {tab.label}
@@ -62,10 +77,9 @@ export function DashboardLayout({ children, activeTab, onTabChange }: DashboardL
             ))}
           </div>
         </div>
+        <main className="flex-1 p-4 overflow-hidden">{children}</main>
       </div>
-
-      {/* Content */}
-      <main className="p-6">{children}</main>
+      </div>
     </div>
   );
 }
